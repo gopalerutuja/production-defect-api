@@ -58,8 +58,26 @@ Uploads a CSV file containing the dataset for training and prediction.
 **Response:**
 ```json
 {
-  "message": "File uploaded successfully",
-  "columns": ["column1", "column2", "target"]
+    "columns": [
+        "ProductionVolume",
+        "ProductionCost",
+        "SupplierQuality",
+        "DeliveryDelay",
+        "DefectRate",
+        "QualityScore",
+        "MaintenanceHours",
+        "DowntimePercentage",
+        "InventoryTurnover",
+        "StockoutRate",
+        "WorkerProductivity",
+        "SafetyIncidents",
+        "EnergyConsumption",
+        "EnergyEfficiency",
+        "AdditiveProcessTime",
+        "AdditiveMaterialCost",
+        "DefectStatus"
+    ],
+    "message": "File uploaded successfully"
 }
 ```
 
@@ -78,18 +96,34 @@ Trains the machine learning model on the uploaded dataset.
 - **Body:**
   ```json
   {
-    "features": ["feature1", "feature2"],
-    "target": "target_column",
-    "model": "logistic_regression"
-  }
+  "features": ["ProductionVolume",
+        "ProductionCost",
+        "SupplierQuality",
+        "DeliveryDelay",
+        "DefectRate",
+        "QualityScore",
+        "MaintenanceHours",
+        "DowntimePercentage",
+        "InventoryTurnover",
+        "StockoutRate",
+        "WorkerProductivity",
+        "SafetyIncidents",
+        "EnergyConsumption",
+        "EnergyEfficiency",
+        "AdditiveProcessTime",
+        "AdditiveMaterialCost"],
+  "target": "DefectStatus",
+  "model": "logistic_regression"
+}
+
   ```
 
 **Response:**
 ```json
 {
-  "message": "Model trained successfully",
-  "accuracy": 0.85,
-  "f1_score": 0.82
+    "accuracy": 0.5,
+    "f1_score": 0.494949494949495,
+    "message": "Model trained successfully"
 }
 ```
 
@@ -108,19 +142,36 @@ Predicts outcomes based on input data using the trained model.
 - **Body:**
   ```json
   {
-    "data": [
-      {
-        "feature1": 10,
-        "feature2": 20
-      }
-    ]
-  }
+  "data": [
+    {
+      "ProductionVolume": 202,
+      "ProductionCost": 13175.40378,
+      "SupplierQuality": 86.64853384,
+      "DeliveryDelay": 1,
+      "DefectRate": 3.121492267,
+      "QualityScore": 63.46349433,
+      "MaintenanceHours": 9,
+      "DowntimePercentage": 0.052342867,
+      "InventoryTurnover": 8.63051535,
+      "StockoutRate": 0.081321681,
+      "WorkerProductivity": 85.04237928,
+      "SafetyIncidents": 0,
+      "EnergyConsumption": 2419.616785,
+      "EnergyEfficiency": 0.468946624,
+      "AdditiveProcessTime": 5.55163899,
+      "AdditiveMaterialCost": 236.439301
+    }
+  ]
+}
+
   ```
 
 **Response:**
 ```json
 {
-  "predictions": [1]
+    "predictions (1 = defective/0 = not defective)": [
+        1
+    ]
 }
 ```
 
