@@ -11,7 +11,7 @@ This is a RESTful API for predicting production defects using a supervised machi
 Ensure you have the following installed on your system:
 - Python (version 3.8 or above)
 - Flask
-- Required Python libraries (see `requirements.txt`)
+- Required Python libraries 
 - Postman (optional, for testing the API)
 
 ### **2. Clone the Repository**
@@ -23,7 +23,7 @@ cd <repository-folder>
 ### **3. Install Dependencies**
 Install the required Python libraries:
 ```bash
-pip install -r requirements.txt
+pip install flask pandas scikit-learn joblib
 ```
 
 ### **4. Run the Application**
